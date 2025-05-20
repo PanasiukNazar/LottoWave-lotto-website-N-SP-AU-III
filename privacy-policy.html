@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Discover the most recent AU Lotto winning numbers, draw outcomes, and jackpot news. Your trusted hub for Oz Lotto, Powerball, Saturday Lotto, and more."
+        />
+        <meta
+            name="keywords"
+            content="AU Lotto results, Australia lottery updates, Oz Lotto numbers, Powerball draws, Saturday Lotto winning numbers, Aussie lottery, AU jackpots, Lotto draws"
+        />
+        <meta name="author" content="Ben Thompson" />
+        <meta
+            property="og:title"
+            content="Latest AU Lotto Numbers & Jackpot Info | Official Draw Results"
+        />
+        <meta
+            property="og:description"
+            content="Follow AU Lotto for the newest winning combinations, current jackpots, and detailed lottery results from Australia’s top games."
+        />
+
+        <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_AU" />
+        <title>LottoWave</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Swiper CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+        />
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/globals.css" />
+
+        <style>
+            :root {
+                --fs: 0.85vw;
+                font-size: var(--fs);
+                font-family: "Inter", serif;
+            }
+
+            @media (max-width: 1280px) {
+                :root {
+                    --fs: 1.5vw;
+                }
+            }
+
+            @media (max-width: 768px) {
+                :root {
+                    --fs: 2vw;
+                }
+            }
+
+            @media (max-width: 640px) {
+                :root {
+                    --fs: 2.75vw;
+                }
+            }
+
+            body {
+                font-family: "Inter", serif;
+            }
+        </style>
+
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        zIndex: {
+                            100: "100",
+                        },
+                    },
+                },
+                plugins: [],
+            };
+        </script>
+    </head>
+    <body class="min-h-screen bg-[#FFFFFF]">
+        <!-- Toast Notifications -->
+        <div
+            id="login-toast"
+            class="toast fixed hidden bottom-6 right-6 z-[1000] bg-[#00539CFF] text-[#FFFFFF] text-center max-md:text-lg px-6 py-3 rounded-md shadow-md transition-all"
+        >
+            Entry submitted successfully for AU Lotto!
+        </div>
+
+        <div
+            id="register-toast"
+            class="toast fixed hidden bottom-6 right-6 z-[1000] bg-[#00539CFF] text-[#FFFFFF] text-center max-md:text-lg px-6 py-3 rounded-md shadow-md transition-all"
+        >
+            Your AU Lotto ticket has been successfully submitted!
+        </div>
+
+        <div
+            class="modal w-full h-screen z-[9999999] fixed top-0 left-0 bg-black bg-opacity-70 flex items-center justify-center"
+        >
+            <div
+                class="modal__window w-1/3 max-xl:w-2/3 max-md:w-[90%] p-10 max-xl:py-14 max-md:py-24 shadow-2xl bg-white rounded-xl flex flex-col items-center gap-6"
+            >
+                <h2
+                    class="modal__title text-[#004A99] font-extrabold text-center text-3xl max-md:text-4xl"
+                >
+                    Confirm Your Age
+                </h2>
+
+                <p
+                    class="text-center text-gray-700 max-w-md text-lg max-md:text-xl"
+                >
+                    AU Lotto is intended for users 18 years and older. Please
+                    verify your age to continue enjoying our services safely and
+                    responsibly.
+                </p>
+
+                <div
+                    class="modal__button-wrapper flex items-center gap-6"
+                    style="flex-direction: column"
+                >
+                    <button
+                        class="modal__button bg-[#004A99] hover:bg-[#003d7a] transition text-white w-28 max-xl:w-36 px-7 py-2 rounded-2xl text-xl font-semibold max-xl:px-8 max-xl:py-3 shadow-lg"
+                        onclick="document.body.style.overflowY = 'auto'; document.querySelector('.modal').remove();"
+                        style="width: 100%"
+                    >
+                        I am 18 or Older
+                    </button>
+
+                    <a
+                        href="terms-of-use.html"
+                        target="_blank"
+                        style="width: 100%"
+                        rel="noopener noreferrer"
+                        class="modal__button bg-white hover:bg-gray-100 transition border-2 border-[#004A99] text-[#004A99] w-28 max-xl:w-36 py-2 rounded-2xl px-7 text-xl font-semibold text-center max-xl:px-8 max-xl:py-3"
+                    >
+                        I am Under 18
+                    </a>
+                </div>
+
+                <p
+                    class="text-center text-gray-500 max-w-sm text-sm mt-4 max-md:text-base"
+                >
+                    If you are under 18, you are not permitted to access this
+                    site. Please visit our
+                    <a href="terms-of-use.html" class="text-[#004A99] underline"
+                        >Terms of Use</a
+                    >
+                    for more information.
+                </p>
+            </div>
+        </div>
+
+        <!-- Scroll to Top -->
+        <div
+            class="scroll-up flex items-center z-[100] justify-center fixed bottom-16 right-6 w-12 h-12 max-md:w-14 max-md:h-14 bg-[#00539CFF] cursor-pointer rounded-full text-white shadow-xl hover:shadow-2xl hover:scale-105 opacity-0 transition duration-300"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-up w-5 h-5 max-md:w-6 max-md:h-6"
+            >
+                <path d="m5 12 7-7 7 7" />
+                <path d="M12 19V5" />
+            </svg>
+        </div>
+
+        <!-- Header -->
+        <header
+            id="header"
+            class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5"
+            style="background: #fff"
+        >
+            <div class="w-[60%] max-xl:w-[75%] max-md:w-[90%] mx-auto px-4">
+                <div class="flex items-center justify-between">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <div>
+                            <h1
+                                class="text-2xl max-md:text-3xl font-bold text-[#00539CFF]"
+                            >
+                                LottoWave
+                            </h1>
+                        </div>
+                    </a>
+
+                    <!-- Desktop Navigation -->
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a
+                            href="index.html#how-it-works"
+                            data-scroll="how-it-works"
+                            class="text-gray-700 hover:text-[#00539CFF] transition-colors"
+                        >
+                            How AU Lotto Works
+                        </a>
+                        <a
+                            href="index.html#winners"
+                            data-scroll="winners"
+                            class="text-gray-700 hover:text-[#00539CFF] transition-colors"
+                        >
+                            Services
+                        </a>
+                        <a
+                            href="index.html#about"
+                            data-scroll="about"
+                            class="text-gray-700 hover:text-[#00539CFF] transition-colors"
+                        >
+                            About AU Lotto
+                        </a>
+                        <a
+                            href="index.html#faq"
+                            data-scroll="faq"
+                            class="text-gray-700 hover:text-[#00539CFF] transition-colors"
+                        >
+                            FAQ
+                        </a>
+                        <a
+                            href="index.html#contact"
+                            class="text-gray-700 hover:text-[#00539CFF] transition-colors"
+                        >
+                            Contact
+                        </a>
+                    </nav>
+
+                    <!-- Mobile Menu Button -->
+                    <button
+                        id="mobile-menu-button"
+                        class="md:hidden text-gray-700"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            id="menu-icon"
+                        >
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            id="close-icon"
+                            class="hidden"
+                        >
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Menu -->
+        <div
+            id="mobile-menu"
+            class="fixed inset-0 z-40 bg-white pt-20 px-4 hidden"
+        >
+            <nav class="flex flex-col gap-4">
+                <a
+                    href="index.html#how-it-works"
+                    data-scroll="how-it-works"
+                    class="text-lg font-medium text-gray-800 py-3 border-b border-gray-100 mobile-menu-link"
+                >
+                    How AU Lotto Works
+                </a>
+                <a
+                    href="index.html#winners"
+                    data-scroll="winners"
+                    class="text-lg font-medium text-gray-800 py-3 border-b border-gray-100 mobile-menu-link"
+                >
+                    Services
+                </a>
+                <a
+                    href="index.html#about"
+                    data-scroll="about"
+                    class="text-lg font-medium text-gray-800 py-3 border-b border-gray-100 mobile-menu-link"
+                >
+                    About AU Lotto
+                </a>
+                <a
+                    href="index.html#faq"
+                    data-scroll="faq"
+                    class="text-lg font-medium text-gray-800 py-3 border-b border-gray-100 mobile-menu-link"
+                >
+                    FAQ
+                </a>
+                <a
+                    href="contact.html"
+                    class="text-lg font-medium text-gray-800 py-3 border-b border-gray-100 mobile-menu-link"
+                >
+                    Contact
+                </a>
+            </nav>
+        </div>
+
+        <section
+            class="pt-32 pb-10 md:pt-40 md:pb-16 bg-gradient-to-b from-blue-50 to-white"
+        >
+            <div class="w-[60%] max-xl:w-[75%] max-md:w-[90%] mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1
+                        class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent"
+                    >
+                        Privacy Policy
+                    </h1>
+                    <p class="text-lg max-md:text-xl text-gray-700 mb-0">
+                        Last updated: March 20, 2025
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-16 max-md:pb-20">
+            <div class="w-[60%] max-xl:w-[75%] max-md:w-[90%] mx-auto px-4">
+                <div class="bg-white rounded-xl shadow-lg p-8 md:p-10">
+                    <div class="prose prose-blue max-w-none">
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            About This Policy
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            At AU Lotto, your privacy is a top priority. This
+                            Privacy Policy describes how we collect, use, store,
+                            and protect the personal information of users who
+                            engage with our website and services. Please read it
+                            carefully to understand how your data is managed.
+                        </p>
+
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            Information We Collect
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            When you use AU Lotto, we may collect the following
+                            types of information:
+                        </p>
+                        <ul
+                            class="list-disc pl-6 mb-6 space-y-2 max-md:text-lg"
+                        >
+                            <li>
+                                Personal details provided during account
+                                creation, such as name and email address
+                            </li>
+                            <li>
+                                Technical data like IP address, browser type,
+                                and device information
+                            </li>
+                            <li>
+                                Interaction data including site navigation,
+                                clicks, and engagement
+                            </li>
+                        </ul>
+
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            How We Use Your Information
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            The data we collect is used to enhance your AU Lotto
+                            experience. Specifically, we use your information
+                            to:
+                        </p>
+                        <ul
+                            class="list-disc pl-6 mb-6 space-y-2 max-md:text-lg"
+                        >
+                            <li>Enable and maintain your account</li>
+                            <li>
+                                Deliver personalized content and lottery
+                                features
+                            </li>
+                            <li>
+                                Improve platform functionality and fix technical
+                                issues
+                            </li>
+                            <li>Communicate important service updates</li>
+                        </ul>
+
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            How We Share Your Data
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            We do not sell your personal data. Your information
+                            may be shared with trusted service providers that
+                            support AU Lotto operations (e.g., hosting,
+                            analytics, or email delivery services). All
+                            third-party partners are obligated to safeguard your
+                            data.
+                        </p>
+
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            Cookies and Tracking
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            AU Lotto uses cookies to offer a secure and smooth
+                            browsing experience. Cookies help us remember your
+                            preferences, track website usage, and improve
+                            functionality. For more details, view our
+                            <a
+                                href="/cookies"
+                                class="text-blue-600 hover:underline"
+                                >Cookies Policy</a
+                            >.
+                        </p>
+
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            Data Retention
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            We retain your personal information only for as long
+                            as necessary to fulfill the purposes outlined in
+                            this policy. When your data is no longer required,
+                            we securely delete or anonymize it.
+                        </p>
+
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            Your Rights and Choices
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            You have the right to access, update, or delete your
+                            personal information. You may also withdraw consent
+                            where applicable. To exercise your rights, please
+                            contact us directly using the details below.
+                        </p>
+
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            Security Measures
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            We implement technical and organizational safeguards
+                            to protect your data against unauthorized access,
+                            alteration, or disclosure. While no system is
+                            entirely secure, we continuously monitor and enhance
+                            our security framework.
+                        </p>
+
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                            Policy Updates
+                        </h2>
+                        <p class="mb-6 max-md:text-lg">
+                            This Privacy Policy may be updated occasionally to
+                            reflect changes in technology, regulations, or
+                            service offerings. The revised date will be posted
+                            at the top of this page. We encourage you to review
+                            the policy regularly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#141833] text-white pt-16 pb-24">
+            <div class="w-[60%] max-xl:w-[75%] max-md:w-[90%] mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="flex flex-col">
+                        <a
+                            href="index.html"
+                            class="flex items-center gap-2 mb-6"
+                        >
+                            <div>
+                                <h3
+                                    class="text-2xl max-md:text-3xl font-bold text-white"
+                                >
+                                    LottoWave
+                                </h3>
+                            </div>
+                        </a>
+                        <p
+                            class="text-[#888CA8] mb-4 text-sm max-md:text-base w-[60%] max-md:w-full"
+                        >
+                            LottoWave delivers trusted updates and support for
+                            AU Lotto players, giving you the information you
+                            need for your next lucky draw.
+                        </p>
+                        <p>
+                            Office Level 1/530 Little Collins St, Melbourne VIC
+                        </p>
+                        <p>+61316645123</p>
+                        <p>lotto_wave@gmail.com</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="font-semibold max-md:text-lg mb-4">
+                                Navigation
+                            </h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a
+                                        href="index.html#how-it-works"
+                                        data-scroll="how-it-works"
+                                        class="text-[#888CA8] text-sm max-md:text-base hover:text-white transition-colors"
+                                    >
+                                        How It Works
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="index.html#winners"
+                                        data-scroll="winners"
+                                        class="text-[#888CA8] text-sm max-md:text-base hover:text-white transition-colors"
+                                    >
+                                        Services
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="index.html#about"
+                                        data-scroll="about"
+                                        class="text-[#888CA8] text-sm max-md:text-base hover:text-white transition-colors"
+                                    >
+                                        About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="index.html#faq"
+                                        data-scroll="faq"
+                                        class="text-[#888CA8] text-sm max-md:text-base hover:text-white transition-colors"
+                                    >
+                                        FAQ
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold max-md:text-lg mb-4">
+                                Legal
+                            </h3>
+                            <ul class="space-y-2">
+                                <li>
+                                    <a
+                                        href="privacy-policy.html"
+                                        class="text-[#888CA8] text-sm max-md:text-base hover:text-white transition-colors"
+                                    >
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="terms-of-use.html"
+                                        class="text-[#888CA8] text-sm max-md:text-base hover:text-white transition-colors"
+                                    >
+                                        Terms and Conditions
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="cookie-policy.html"
+                                        class="text-[#888CA8] text-sm max-md:text-base hover:text-white transition-colors"
+                                    >
+                                        Cookies Policy
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="border-t border-[#888CA8] pt-8 mt-8 text-center text-white text-sm max-md:text-base"
+                >
+                    <p>
+                        <span id="current-year"></span>
+                        All materials on this website are designed solely to
+                        share helpful content about AU Lotto. While we strive
+                        for accuracy in draw dates, game rules, and prize
+                        details, we advise verifying results through official AU
+                        Lotto channels.<br />
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Cookie banner -->
+        <div class="cookie-wrapper show">
+            <div>
+                <i class="bx bx-cookie"></i>
+                <h2 style="text-align: center">Cookie Consent</h2>
+            </div>
+
+            <div class="data">
+                <p>
+                    This website uses cookies to provide you with a better and
+                    more relevant browsing experience.
+                    <a href="cookie-policy.html">Learn more...</a>
+                </p>
+            </div>
+
+            <div class="buttons">
+                <button class="cookie-button" id="acceptBtn">Accept</button>
+                <button class="cookie-button" id="declineBtn">Decline</button>
+            </div>
+        </div>
+        <!-- End Cookie banner -->
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <!-- Custom JS -->
+        <script src="js/main.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/cookiebanner.js"></script>
+    </body>
+</html>
